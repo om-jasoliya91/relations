@@ -10,7 +10,7 @@ Route::get('/', function () {
 // if we want this hasone method then uncomment index function and comment hasMany Method
 Route::get('/author/create', [AuthorController::class, 'create'])->name('author.create');
 Route::post('/author/store', [AuthorController::class, 'store'])->name('author.store');
-// Route::get('/author/index', [AuthorController::class, 'index'])->name('authors.index');
+Route::get('/author/index', [AuthorController::class, 'index'])->name('authors.index');
 
 // this is one to many example
 Route::get('/posts', [PostController::class, 'allPost'])->name('posts.index');

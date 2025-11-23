@@ -36,21 +36,32 @@ class AuthorController extends Controller
         return redirect()->back()->with('success', 'Author and Biography created!');
     }
 
-    // public function index()
-    // {
-    //     // if i use this so only print authors data
-    //     // $authors = Author::all();
+    public function index()
+    {
+    //    Only Authors (without Biography)
+        $authors = Author::all();
 
-    //     // this is dislay data which is connected with biography useing field name
-    //     // $authors = Author::with('biography')->get();
-    //     $authors = Author::with('biography:id,author_id,bio_text,website')->get();
+        // Authors with Biography (Eager Loading)
+        // $authors = Author::with('biography')->get();
+        // Always include author_id (foreign key) so relation works.
+        // $authors = Author::with('biography:id,author_id,bio_text')->get();
 
-    //     // echo '<pre>';
-    //     // print_r($authors);
-    //     // echo '</pre>';
-    //     // exit;
-    //     return view('author.index', compact('authors'));
-    // }
+        // $authors = Author::whereHas('biography',function($q){
+        //     $q->where('bio_text','like','%developer%');
+        // })->with('biography')->get();
+
+        // Get only authors that have biography
+        // $authors = Author::has('biography')->with('biography')->get();
+
+        // Get authors that do not have biography
+        //$authors = Author::doesntHave('biography')->get();
+
+       // Load biography after fetching authors (Lazy Loading)
+       // $authors = Author::all();
+      //  $authors->load('biography'); // biography NOT loaded here
+
+        return view('author.index', compact('authors'));
+    }
 
     public function allPosts()
     {
