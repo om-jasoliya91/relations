@@ -9,7 +9,8 @@ return new class extends Migration {
     {
         Schema::create('biographies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author_id')->constrained()->onDelete('cascade');
+            $table->foreignId('author_id')->constrained()->onDelete('cascade'); //it is optional
+            // $table->unsignedBigInteger('author_id'); // it is used as method and use in controller
             $table->text('bio_text')->nullable();
             $table->string('website')->nullable();
             $table->timestamps();

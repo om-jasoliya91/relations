@@ -6,25 +6,25 @@
 </head>
 
 <body>
-    <h1>All Posts</h1>
+    {{-- <h1>All Posts</h1> --}}
 
     {{-- Success message --}}
     @if (session('success'))
         <p style="color:green">{{ session('success') }}</p>
     @endif
 
-    <a href="{{ route('posts.create') }}">Add New Post</a>
+    {{-- <a href="{{ route('posts.create') }}">Add New Post</a> --}}
     <hr>
 
     {{-- Optional: Show all authors --}}
-    <h2>All Authors</h2>
+    {{-- <h2>All Authors</h2>
     @foreach ($authors as $author)
         <p><strong>{{ $author->author_name }}</strong> ({{ $author->email }})</p>
     @endforeach
-    <hr>
+    <hr> --}}
 
     {{-- Posts with related author --}}
-    <h2>All Posts</h2>
+    {{-- <h2>All Posts</h2>
     @foreach ($posts as $post)
         <h3>{{ $post->title }}</h3>
         <p>{{ $post->content }}</p>
@@ -36,7 +36,7 @@
         @endif
 
         <hr>
-    @endforeach
+    @endforeach --}}
 
 
 

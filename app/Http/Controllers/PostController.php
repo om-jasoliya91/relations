@@ -52,7 +52,30 @@ class PostController extends Controller
 
         return view('posts.by_author', compact('author', 'posts'));
     }
+// $id
+    public function getAuthorPosts($postId)
+{
+    // find author by id
+    // $author = Author::find($id);
+    // return $author->posts; // returns collection of posts
+
+// Get posts + author details (Eager Loading)
+// $author = Author::with('posts')->find($id);
+// return $author->posts;
+
+//  $author = Author::find($id);
+//     return $author->posts()->latest()->take(5)->get();
+
+//  $author = Author::find($id);
+//     return $author->posts()->orderBy('title', 'asc')->get();
+
+    // $author = Author::find($id);
+    // return $author->posts()->where('title', 'LIKE', "%$keyword%")->get();
+
+    // Get post with author (reverse)
+    $post = Post::with('author')->find($postId);
+    return $post;
+}
 
 
-    
 }
